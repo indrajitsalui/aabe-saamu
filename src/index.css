@@ -5,26 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 0;
-  overflow-x: hidden; /* Prevents horizontal scroll */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.slick-slider .slick-next,
-.slick-slider .slick-prev {
-  /* Adjust the position to bring the arrows closer to the carousel */
-  top: 50%;
-  transform: translate(0, -50%);
-}
-
-.slick-slider .slick-next {
-  right: -25px; /* Adjust the value as needed */
-}
-
-.slick-slider .slick-prev {
-  left: -25px; /* Adjust the value as needed */
-}
-

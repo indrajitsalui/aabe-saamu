@@ -1,0 +1,26 @@
+/* src/components/BannerSlider/BannerSlider.css */
+.banner-slider {
+    width: 80%; /* Adjust width as needed */
+    margin: 0 auto 40px;
+}
+
+.banner-slide {
+    position: relative;
+}
+
+.banner-image {
+    width: 100%;
+    height: 300px; /* Adjust height as needed */
+    object-fit: cover;
+}
+
+.banner-title {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 18px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+}

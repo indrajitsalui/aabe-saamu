@@ -1,30 +1,45 @@
-import React from 'react';
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import theme from './theme';
-import Header from './components/Header';
-import AIProductionsPage from './components/AIProductionsPage';
-import AdvertisementsPage from './components/AdvertisementsPage';
-import HomePage from './components/HomePage';
-import Footer from './components/Footer';
+// src/App.js
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home/Home';
+import A1Productions from './pages/A1Productions/A1Productions';
+import Advertisements from './pages/Advertisements/Advertisements';
+import Login from './pages/Login/Login';
+import './styles/global.css';
+import Player from './pages/Player/Player'; // Import the Player component
 
 function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/ai-productions" element={<AIProductionsPage />} />
-          <Route path="/advertisements" element={<AdvertisementsPage />} />
-          {/* Define additional routes if necessary */}
-        </Routes>
-        <Footer />
-      </Router>
-      {/* Place Footer here if it's consistent across all pages */}
-    </ThemeProvider>
-  );
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const token = localStorage.getItem('authToken');
+        if (token) {
+            setIsLoggedIn(true);
+        }
+    }, []);
+
+    const handleLogin = (token) => {
+        localStorage.setItem('authToken', token);
+        setIsLoggedIn(true);
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('authToken');
+        setIsLoggedIn(false);
+    };
+    return (
+        <Router>
+            <div className="app-container">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/a1productions" element={<A1Productions />} />
+                    <Route path="/advertisements" element={<Advertisements />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/player/:videoId" element={<Player />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;

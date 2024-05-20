@@ -1,0 +1,93 @@
+/* src/pages/Player/Player.css */
+.player-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.player-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.video-wrapper {
+    width: 800px;
+    height: 450px;
+    margin: 0 auto;
+    background: #000;
+}
+
+.video-wrapper iframe, .video-wrapper video {
+    width: 100%;
+    height: 100%;
+}
+
+.video-details {
+    width: 100%;
+    max-width: 800px;
+    background: #1c1c1c;
+    color: #fff;
+    border-radius: 8px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.video-details h2 {
+    margin-bottom: 10px;
+}
+
+.video-details p {
+    margin-bottom: 20px;
+}
+
+.video-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.video-quality {
+    display: flex;
+    align-items: center;
+}
+
+.video-quality label {
+    margin-right: 10px;
+}
+
+.video-quality select {
+    padding: 5px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+}
+
+.like-button {
+    padding: 10px 20px;
+    background: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.video-schedule h3 {
+    margin-bottom: 10px;
+}
+
+.video-schedule ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.video-schedule ul li {
+    margin-bottom: 5px;
+    padding: 10px;
+    background: #2c2c2c;
+    border-radius: 4px;
+}
