@@ -3,11 +3,28 @@ import axios from 'axios';
 
 const apiService = axios.create({
     baseURL: '', // Leave it empty to use the proxy
-    headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`
-    }
 });
-
+const getAuthToken = () => {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+        return `Bearer ${token}`;
+    } else {
+        // Use dummy credentials from environment variables for auto-login
+        return `Bearer ${process.env.REACT_APP_API_TOKEN}`;
+    }
+};
+apiService.interceptors.request.use(
+    config => {
+        const token = getAuthToken();
+        if (token) {
+            config.headers['Authorization'] = token;
+        }
+        return config;
+    },
+    error => {
+        return Promise.reject(error);
+    }
+);
 // Interceptor for handling responses
 apiService.interceptors.response.use(
     response => response,
@@ -62,14 +79,28 @@ export const fetchLiveTVList = (date) => {
 export const fetchAdvertisements = () => {
     return handleApiCall(() => apiService.get('/v1/app-config/home'));
 };
-export const login = (email, password) => {
-    return apiService.post('/v1/user/login', { email, password });
+export const login = async (email, password) => {
+    const response = await apiService.post('/v1/user/login', { email, password });
+    const { token } = response.data;
+    localStorage.setItem('authToken', token);  // Store the token in localStorage
+    return response.data;
 };
 
 // Register API Call
-export const register = (full_name, email, password, phone_number) => {
-    return apiService.post('/v1/user/register', { full_name, email, password, phone_number });
+export const register = async (full_name, email, password, phone_number) => {
+    const response = await apiService.post('/v1/user/register', { full_name, email, password, phone_number });
+    const { token } = response.data;
+    localStorage.setItem('authToken', token);  // Store the token in localStorage
+    return response.data;
 };
+export const dummyLogin = async () => {
+    const email = process.env.REACT_APP_USER_NAME;
+    const password = process.env.REACT_APP_PASSWORD;
+    const response = await login(email, password); // Reuse the login function
+    return response;
+};
+
+
 export const fetchVideoDetails = async (videoId) => {
     try {
         const response = await apiService.get(`/v1/a1prodvideo/detail/${videoId}`);

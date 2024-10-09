@@ -54,9 +54,18 @@ const Header = () => {
         setShowDropdown(!showDropdown);
     };
 
+    // Set default values if user or any of its fields are undefined
+    const defaultProfilePic = '/profile_pic.png';  // Replace with the path to your default image
+    const defaultFullName = 'Guest';
+    const defaultEmail = 'guest@example.com';
+
+    const profilePicture = user?.profile_picture || defaultProfilePic;
+    const fullName = user?.full_name || defaultFullName;
+    const email = user?.email || defaultEmail;
+
     return (
         <header className="header">
-            <img src="/logo.png" alt="AmeSabu" className="logo" />
+            <img src="/aamesabu.png" alt="AmeSabu" className="logo" />
             <nav className="nav">
                 <a href="/">Live TV</a>
                 <a href="/a1productions">A1 Productions</a>
@@ -70,13 +79,13 @@ const Header = () => {
                             <div className="account-dropdown">
                                 <div className="account-info">
                                     <img
-                                        src={user.data.profile_picture || 'default-profile.png'}
+                                        src={profilePicture}  // Fallback for profile picture
                                         alt="Profile"
                                         className="profile-picture"
                                     />
                                     <div>
-                                        <p className="account-name">{user.data.full_name}</p>
-                                        <p className="account-email">{user.data.email}</p>
+                                        <p className="account-name">{fullName}</p>  {/* Fallback for full name */}
+                                        <p className="account-email">{email}</p>   {/* Fallback for email */}
                                     </div>
                                 </div>
                                 <div className="account-actions">
