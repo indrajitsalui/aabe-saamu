@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const apiService = axios.create({
-    baseURL: '' // Leave it empty to use the proxy
+    baseURL: process.env.REACT_APP_API_URL // Leave it empty to use the proxy
 });
 const getAuthToken = () => {
     const token = localStorage.getItem('authToken');
