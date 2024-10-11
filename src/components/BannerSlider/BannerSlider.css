@@ -1,26 +1,23 @@
-/* src/components/BannerSlider/BannerSlider.css */
-.banner-slider {
-    width: 80%; /* Adjust width as needed */
-    margin: 0 auto 40px;
+/* Change the color of the inactive dots */
+.slick-dots li button:before {
+    color: white; /* Change dot color to white */
+    opacity: 0.25; /* Adjust opacity for inactive dots */
+    font-size: 14px;
 }
 
-.banner-slide {
-    position: relative;
-}
-
-.banner-image {
-    width: 100%;
-    height: 300px; /* Adjust height as needed */
-    object-fit: cover;
-}
-
-.banner-title {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
+/* Change the color of the active dot */
+.slick-dots li.slick-active button:before {
+    color:#FF8A00;
+    ; /* Change active dot color to white */
+    opacity: 1; /* Ensure the active dot is fully opaque */
     font-size: 18px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 5px 10px;
-    border-radius: 5px;
 }
+
+/* Optional: Change the size of the dots */
+.slick-dots li button {
+    width: 19px; /* Adjust dot size */
+    height: 16px; /* Adjust dot size */
+    border-radius: 50%; /* Make them round */
+    background-color: transparent; /* Optional: make background transparent */
+}
+

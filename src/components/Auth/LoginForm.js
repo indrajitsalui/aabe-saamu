@@ -19,28 +19,40 @@ const LoginForm = ({ onSwitchToSignup, onClose, onLoginSuccess }) => {
     };
 
     return (
-        <div className="auth-container">
-            <h2>Login to Continue</h2>
-            <form onSubmit={handleSubmit}>
-                <input
+        <div className="">
+            <h2 className="mb-4">Login to Continue</h2>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                <div>
+                    <input
+                    className="bg-[#222222] py-2 px-4 rounded w-full"
                     type="email"
                     placeholder="Email ID"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                 />
+                </div>
+                <div>
                 <input
+                    className="bg-[#222222] py-2 px-4 rounded w-full"
                     type="password"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-                {error && <p className="error-message">{error}</p>}
-                <button type="submit">Login Now</button>
+                </div>
+
+                <div>
+                <div>{error && <p className="error-message">{error}</p>}</div>
+                <button type="submit" className="text-white bg-[#D21F1D] py-2 px-3 rounded-lg w-full">Login Now</button>
+                </div>
             </form>
-            <div className="auth-footer">
-                <p>New user? <button onClick={onSwitchToSignup}>Sign Up</button></p>
+            <div className="mt-6 text-center">
+                <div className="flex justify-center gap-2">
+                    <p>New user?</p>
+                    <button onClick={onSwitchToSignup} className="text-[#D21F1D] underline font-medium">Sign Up</button>
+                </div>
             </div>
         </div>
     );

@@ -7,25 +7,47 @@ const BannerSlider = ({ banners }) => {
     const settings = {
         dots: true,
         infinite: true,
+        lazyLoad: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 5000,
         arrows: false, // Remove arrows
+        pauseOnHover: true,
+        appendDots: dots => (
+            <div
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                position: "absolute",
+                bottom: "6px",
+                borderBottomLeftRadius: "16px",
+                borderBottomRightRadius: "16px",
+                padding: "20px 16px"
+              }}
+            >
+                <ul style={{ display: 'flex', justifyContent: 'center' }}>
+                {React.Children.map(dots, (dot) =>
+                  React.cloneElement(dot, {
+                    style: { color: 'white' } // Change dot color to white
+                  })
+                )}
+              </ul>
+            </div>
+          ),
     };
 
     return (
-        <div className="banner-slider">
-            <Slider {...settings}>
+      
+            <Slider {...settings} className="rounded-2xl">
                 {banners.map((banner, index) => (
-                    <div key={index} className="banner-slide">
-                        <img src={banner.banner_image} alt={banner.title} className="banner-image" />
-                        <p className="banner-title">{banner.title}</p>
+                    <div key={index} className="rounded-2xl">
+                        <img src={banner.banner_image} alt={banner.title} className="w-full rounded-2xl" />
+                        {/* <p>{banner.title}</p> */}
                     </div>
                 ))}
             </Slider>
-        </div>
+       
     );
 };
 

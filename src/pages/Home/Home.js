@@ -6,7 +6,7 @@ import BannerSlider from '../../components/BannerSlider/BannerSlider';
 import VideoSlider from '../../components/VideoSlider/VideoSlider';
 import AdSlider from '../../components/AdSlider/AdSlider';
 import { fetchHomeData, fetchLiveTVList } from '../../api/apiService';
-import './Home.css';
+// import './Home.css';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
@@ -57,26 +57,32 @@ const Home = () => {
     };
 
     return (
-        <div className="home">
+        <div>
             <Header />
-            <div className="content">
+            <div className="mt-28 w-8/12 mx-auto">
                 {error && <div className="error-message">{error}</div>}
                 <BannerSlider banners={banners} />
                 {liveTV && (
-                    <div className="live-tv-section" onClick={handleLiveTVClick}>
-                        <div className="live-tv-text">
-                            <h2>Live TV</h2>
-                            <p>Watch live TV</p>
-                            <span>Get to see all the live shows</span>
+                    <div className="bg-[#1F1F1F] rounded-2xl h-20 flex justify-between items-center my-10" onClick={handleLiveTVClick}>
+                        <div className="flex items-center gap-x-6 pl-10">
+                        <img src="/live.svg" alt="Live_now Icon" className='w-16' />
+                        <div>
+                            <p className="text-lg mb-1.5">Watch live TV</p>
+                            <p className="text-sm font-light text-[#C3C3C3]">Get to see all the live shows</p>
                         </div>
-                        <div className="live-tv-button">
-                            <button>Watch Now</button>
+                        </div>
+                        <div className="bg-white bg-opacity-5 w-1/2 text-right h-20 rounded-e-2xl items-center flex justify-end pr-10 gap-x-2">
+                        <div className="flex items-start gap-x-2">
+                        <p className="text-sm text-center">Click here<br/>to watch now</p>
+                        <img src="/click-arrow.svg" alt="click here to watch now arrow" className="w-12" />
+                        </div>
+                            <button className="text-white bg-[#D21F1D] py-2 px-3 rounded-lg">Watch Now</button>
                         </div>
                     </div>
                 )}
-                <div className="section-title">A1 Productions Videos</div>
-                <VideoSlider videos={videos} onVideoClick={handleVideoClick} />
-                <div className="section-title">Advertisements</div>
+                <p className="text-xl font-semibold text-center my-10">A1 Productions Videos</p>
+                <VideoSlider videos={videos} onVideoClick={handleVideoClick}/>
+                <p className="text-xl font-semibold text-center my-10">Advertisements</p>
                 <AdSlider ads={ads} />
             </div>
             <Footer />

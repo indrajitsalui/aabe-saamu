@@ -49,7 +49,7 @@ const Player = () => {
     return (
         <div className="player-page">
             <Header />
-            <div className="player-content">
+            <div className="player-content mt-28">
                 {videoData && (
                     <>
                         <div className="video-wrapper">
@@ -61,7 +61,11 @@ const Player = () => {
                                 playing
                                 config={{
                                     youtube: {
-                                        playerVars: { controls: 1 }
+                                        playerVars: { 
+                                            controls: 1, 
+                                            rel: 0,
+                                            showinfo: 0  
+                                        }
                                     }
                                 }}
                             />

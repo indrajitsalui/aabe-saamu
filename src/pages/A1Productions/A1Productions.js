@@ -1,7 +1,7 @@
 // src/pages/A1Productions/A1Productions.js
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './A1Productions.css';
+// import './A1Productions.css';
 import { fetchA1ProdHome } from '../../api/apiService';
 import Slider from 'react-slick';
 import BannerSlider from '../../components/BannerSlider/BannerSlider';
@@ -31,30 +31,15 @@ const A1Productions = () => {
     }, []);
 
     const settings = {
-        dots: true,
         infinite: true,
+        lazyLoad: true,
         speed: 500,
         slidesToShow: 3,
-        slidesToScroll: 3,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    initialSlide: 1
-                }
-            }
-        ]
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        arrows: true,
+        pauseOnHover: true,
     };
 
     const handleVideoClick = (videoId) => {
@@ -76,34 +61,47 @@ const A1Productions = () => {
     const videos = [...a1ProdVideos, ...dummyVideos];
 
     return (
-        <div className="a1-productions">
-            <Header />
+     <>
+        <Header />
+        <div className="mt-28 w-8/12 mx-auto">
             <BannerSlider banners={banners} />
-            <h2 className="section-title">A1 Productions Videos</h2>
-            <div className="video-slider-container">
+            <p className="text-xl font-semibold text-center my-10">A1 Productions Videos</p>
+            <div>
                 {videos.slice(0, 3).length > 0 && (
-                    <Slider {...settings}>
+                    <Slider {...settings} className="mb-6">
                         {videos.slice(0, 3).map((video, index) => (
-                            <div key={index} className="video-card" onClick={() => handleVideoClick(video.id)}>
-                                <img src={video.video_image} alt={video.title} />
+                            <div key={index}  className="px-4 h-full flex flex-col" onClick={() => handleVideoClick(video.id)}>
+                                <div className="relative w-full" style={{ paddingBottom: '115%' }}>
+                                <img src={video.video_image} alt={video.title} className="absolute inset-0 w-full h-full object-cover rounded-2xl" />
+                                <div className="absolute bottom-0 left-0 right-0 text-white text-center z-10 bg-black bg-opacity-50 py-2 px-6 min-h-20 items-center justify-center flex font-medium text-base">
                                 <p>{video.title}</p>
+                                 </div>
+                                </div>
                             </div>
                         ))}
                     </Slider>
                 )}
+                
                 {videos.slice(3, 6).length > 0 && (
-                    <Slider {...settings}>
+
+                    <Slider {...settings} className="mb-12">
                         {videos.slice(3, 6).map((video, index) => (
-                            <div key={index} className="video-card" onClick={() => handleVideoClick(video.id)}>
-                                <img src={video.video_image} alt={video.title} />
-                                <p>{video.title}</p>
+                            <div key={index}  className="px-4 h-full flex flex-col" onClick={() => handleVideoClick(video.id)}>
+                                <div className="relative w-full" style={{ paddingBottom: '115%' }}>
+                                <img src={video.video_image} alt={video.title} className="absolute inset-0 w-full h-full object-cover rounded-2xl" />
+                                <div className="absolute bottom-0 left-0 right-0 text-white text-center z-10 bg-black bg-opacity-50 py-2 px-6 min-h-20 items-center justify-center flex font-medium text-base">
+                        <p>{video.title}</p>
+                    </div>
+                                </div>
                             </div>
                         ))}
                     </Slider>
                 )}
             </div>
-            <Footer />
         </div>
+         <Footer />
+         </>
+
     );
 };
 
