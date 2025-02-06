@@ -1,0 +1,10 @@
+/* slider.css */
+.slick-prev, .slick-next {
+  width: 40px;
+  height: 40px;
+}
+
+.slick-prev:before, .slick-next:before {
+  font-size: 40px;
+  /* color: rgba(217, 217, 217, 0.05); */
+}

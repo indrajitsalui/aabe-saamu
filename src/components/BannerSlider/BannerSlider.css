@@ -1,0 +1,23 @@
+/* Change the color of the inactive dots */
+.slick-dots li button:before {
+    color: white; /* Change dot color to white */
+    opacity: 0.25; /* Adjust opacity for inactive dots */
+    font-size: 14px;
+}
+
+/* Change the color of the active dot */
+.slick-dots li.slick-active button:before {
+    color:#FF8A00;
+    ; /* Change active dot color to white */
+    opacity: 1; /* Ensure the active dot is fully opaque */
+    font-size: 18px;
+}
+
+/* Optional: Change the size of the dots */
+.slick-dots li button {
+    width: 19px; /* Adjust dot size */
+    height: 16px; /* Adjust dot size */
+    border-radius: 50%; /* Make them round */
+    background-color: transparent; /* Optional: make background transparent */
+}
+

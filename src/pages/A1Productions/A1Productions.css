@@ -1,0 +1,47 @@
+/* src/pages/A1Productions/A1Productions.css */
+
+
+.section-title {
+    margin: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.video-slider-container {
+    width: 100%;
+}
+
+.video-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.video-card {
+    width: calc(33.333% - 20px);
+    box-sizing: border-box;
+}
+
+.video-card img {
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+}
+
+.video-card p {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+    .video-card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 600px) {
+    .video-card {
+        width: 100%;
+    }
+}
