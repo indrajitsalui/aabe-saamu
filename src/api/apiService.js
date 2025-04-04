@@ -80,7 +80,7 @@ export const fetchAdvertisements = () => {
     return handleApiCall(() => apiService.get('/v1/app-config/home'));
 };
 export const login = async (email, password) => {
-    const response = await apiService.post('/v1/user/login', { email, password });
+    const response = await apiService.post('/v1/user/login', { email, password }, { headers: { 'Authorization': undefined } });
     const { token } = response.data;
     localStorage.setItem('authToken', token);  // Store the token in localStorage
     return response.data;
@@ -88,7 +88,7 @@ export const login = async (email, password) => {
 
 // Register API Call
 export const register = async (full_name, email, password, phone_number) => {
-    const response = await apiService.post('/v1/user/register', { full_name, email, password, phone_number });
+    const response = await apiService.post('/v1/user/register', { full_name, email, password, phone_number }, { headers: { 'Authorization': undefined } });
     const { token } = response.data;
     localStorage.setItem('authToken', token);  // Store the token in localStorage
     return response.data;
