@@ -1,6 +1,17 @@
 // src/api/apiService.js
 import axios from 'axios';
 
+const guestApiService = axios.create({
+    baseURL: process.env.REACT_APP_API_URL 
+  });
+
+
+export const fetchGuestHomeData = () => {
+  return handleApiCall(() =>
+    guestApiService.get('/v1/app-config/guest/home')
+  );
+};
+
 const apiService = axios.create({
     baseURL: process.env.REACT_APP_API_URL // Leave it empty to use the proxy
 });

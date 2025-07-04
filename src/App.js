@@ -7,6 +7,7 @@ import Advertisements from './pages/Advertisements/Advertisements';
 import Login from './pages/Login/Login';
 import './styles/global.css';
 import Player from './pages/Player/Player'; // Import the Player component
+import GuestHome from './pages/GuestHome/GuestHome';
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -31,7 +32,8 @@ function App() {
         <Router>
             <div className="app-container">
                 <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<GuestHome />} />
+                    <Route path="/home" element={<Home />} />
                     <Route path="/a1productions" element={<A1Productions />} />
                     <Route path="/advertisements" element={<Advertisements />} />
                     <Route path="/login" element={<Login />} />
