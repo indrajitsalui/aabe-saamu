@@ -99,6 +99,7 @@ export const login = async (email, password) => {
     const response = await apiService.post('/v1/user/login', { email, password });
     const { token } = response.data;
     localStorage.setItem('authToken', token);  // Store the token in localStorage
+    shouldSkipAuth = false; 
     return response.data;
 };
 

@@ -4,9 +4,12 @@ import Modal from '../Modal/Modal';
 import LoginForm from '../Auth/LoginForm';
 import SignupForm from '../Auth/SignupForm';
 import { Link, useLocation } from 'react-router-dom'; // If using react-router
+import { useNavigate } from 'react-router-dom';
+
 
 
 const Header = () => {
+    const navigate = useNavigate(); 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isLogin, setIsLogin] = useState(true);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -46,6 +49,7 @@ const Header = () => {
         setIsLoggedIn(false);
         setUser(null);
         setShowDropdown(false);
+        navigate('/');
     };
 
     const handleCloseModal = () => {
@@ -80,7 +84,7 @@ const Header = () => {
             <Link
                 to="/livetv"
                 onClick={() => handleClick('/livetv')}
-                className={activeLink === '/' ? 'text-[#D31E1E] font-semibold' : ''}
+                className={activeLink === '/livetv' ? 'text-[#D31E1E] font-semibold' : ''}
             >
                 Live TV
             </Link>

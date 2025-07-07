@@ -1,28 +1,21 @@
 // src/App.js
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import A1Productions from './pages/A1Productions/A1Productions';
 import Advertisements from './pages/Advertisements/Advertisements';
 import Login from './pages/Login/Login';
 import './styles/global.css';
-import Player from './pages/Player/Player'; // Import the Player component
+import Player from './pages/Player/Player';
 import GuestHome from './pages/GuestHome/GuestHome';
 import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
 import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
 import LiveTV from './pages/LiveTV/LiveTV';
 
-
-
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    useEffect(() => {
-        const token = localStorage.getItem('authToken');
-        if (token) {
-            setIsLoggedIn(true);
-        }
-    }, []);
+    const [isLoggedIn, setIsLoggedIn] = useState(() => {
+        return !!localStorage.getItem('authToken');
+    });
 
     const handleLogin = (token) => {
         localStorage.setItem('authToken', token);
@@ -33,15 +26,21 @@ function App() {
         localStorage.removeItem('authToken');
         setIsLoggedIn(false);
     };
+
     return (
         <Router>
             <div className="app-container">
                 <Routes>
-                    <Route path="/" element={<GuestHome />} />
+                    {/* 👇 Conditionally route "/" based on login status */}
+                    <Route
+                        path="/"
+                        element={isLoggedIn ? <Navigate to="/home" replace /> : <GuestHome />}
+                    />
+
                     <Route path="/home" element={<Home />} />
                     <Route path="/a1productions" element={<A1Productions />} />
                     <Route path="/advertisements" element={<Advertisements />} />
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/login" element={<Login onLogin={handleLogin} />} />
                     <Route path="/player/:videoId" element={<Player />} />
                     <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
                     <Route path="/privacy" element={<PrivacyPolicy />} />
