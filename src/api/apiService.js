@@ -1,9 +1,8 @@
 // src/api/apiService.js
 import axios from 'axios';
 
-
 const guestApiService = axios.create({
-    baseURL: process.env.REACT_APP_API_URL || 'http://3.108.80.205:8000'
+    baseURL: process.env.REACT_APP_API_URL 
   });
 
 
@@ -12,10 +11,12 @@ export const fetchGuestHomeData = () => {
     guestApiService.get('/v1/app-config/guest/home')
   );
 };
-  
+
 const apiService = axios.create({
     baseURL: process.env.REACT_APP_API_URL // Leave it empty to use the proxy
 });
+let shouldSkipAuth = false;
+
 const getAuthToken = () => {
     const token = localStorage.getItem('authToken');
     if (token) {
@@ -27,10 +28,12 @@ const getAuthToken = () => {
 };
 apiService.interceptors.request.use(
     config => {
+        if (!shouldSkipAuth) {
         const token = getAuthToken();
         if (token) {
             config.headers['Authorization'] = token;
         }
+    }
         return config;
     },
     error => {
@@ -92,7 +95,8 @@ export const fetchAdvertisements = () => {
     return handleApiCall(() => apiService.get('/v1/app-config/home'));
 };
 export const login = async (email, password) => {
-    const response = await apiService.post('/v1/user/login', { email, password }, { headers: { 'Authorization': undefined } });
+    shouldSkipAuth = true; 
+    const response = await apiService.post('/v1/user/login', { email, password });
     const { token } = response.data;
     localStorage.setItem('authToken', token);  // Store the token in localStorage
     return response.data;
@@ -100,7 +104,8 @@ export const login = async (email, password) => {
 
 // Register API Call
 export const register = async (full_name, email, password, phone_number) => {
-    const response = await apiService.post('/v1/user/register', { full_name, email, password, phone_number }, { headers: { 'Authorization': undefined } });
+    shouldSkipAuth = true; 
+    const response = await apiService.post('/v1/user/register', { full_name, email, password, phone_number });
     const { token } = response.data;
     localStorage.setItem('authToken', token);  // Store the token in localStorage
     return response.data;
