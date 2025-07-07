@@ -8,6 +8,10 @@ import Login from './pages/Login/Login';
 import './styles/global.css';
 import Player from './pages/Player/Player'; // Import the Player component
 import GuestHome from './pages/GuestHome/GuestHome';
+import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
+import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
+
+
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -38,6 +42,8 @@ function App() {
                     <Route path="/advertisements" element={<Advertisements />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/player/:videoId" element={<Player />} />
+                    <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+                    <Route path="/privacy" element={<PrivacyPolicy />} />
                 </Routes>
             </div>
         </Router>
