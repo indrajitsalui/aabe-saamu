@@ -1,0 +1,85 @@
+/* LiveTVPage.css */
+
+.live-tv-container {
+  margin-top: 7rem; /* equivalent to Tailwind mt-28 */
+  width: 66.666667%; /* equivalent to Tailwind w-8/12 */
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+}
+
+.live-tv-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.live-tv-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 640px) {
+  .live-tv-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .live-tv-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.live-tv-card {
+  background-color: #1F1F1F;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.live-tv-card:hover {
+  background-color: #2B2B2B;
+}
+
+.live-tv-image {
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+  width: 100%;
+  height: 10rem;
+  object-fit: cover;
+}
+
+.live-tv-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.live-tv-card-time {
+  font-size: 0.875rem;
+  color: #C3C3C3;
+}
+.live-video-container {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  background-color: #000;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+  border: 2px solid #444;
+}
+
+.live-video-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+

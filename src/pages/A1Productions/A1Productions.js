@@ -16,6 +16,8 @@ const A1Productions = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+         const token = localStorage.getItem('authToken');
+         if (!token) return; // Wait until token is set
         fetchA1ProdHome()
             .then(response => {
                 const data = response.data;

@@ -78,8 +78,8 @@ const Header = () => {
            <a href="/"><img src="/logo.svg" alt="AmeSabu" className="w-32 h-8" /></a>
            <nav className="flex gap-10 text-white">
             <Link
-                to="/"
-                onClick={() => handleClick('/')}
+                to="/livetv"
+                onClick={() => handleClick('/livetv')}
                 className={activeLink === '/' ? 'text-[#D31E1E] font-semibold' : ''}
             >
                 Live TV

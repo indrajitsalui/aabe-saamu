@@ -50,11 +50,9 @@ const Home = () => {
         navigate(`/player/${videoId}`);
     };
 
-    const handleLiveTVClick = () => {
-        if (liveTV && liveTV.id) {
-            navigate(`/player/${liveTV.id}`);
-        }
-    };
+   const handleLiveTVClick = () => {
+    navigate('/livetv');
+};
 
     return (
         <div>

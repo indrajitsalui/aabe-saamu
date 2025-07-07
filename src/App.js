@@ -10,6 +10,7 @@ import Player from './pages/Player/Player'; // Import the Player component
 import GuestHome from './pages/GuestHome/GuestHome';
 import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
 import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
+import LiveTV from './pages/LiveTV/LiveTV';
 
 
 
@@ -44,6 +45,7 @@ function App() {
                     <Route path="/player/:videoId" element={<Player />} />
                     <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
                     <Route path="/privacy" element={<PrivacyPolicy />} />
+                    <Route path="/livetv" element={<LiveTV />} />
                 </Routes>
             </div>
         </Router>
