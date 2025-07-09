@@ -79,10 +79,6 @@ const GuestHome = () => {
         <p className="text-xl font-semibold text-center my-10">A1 Productions Videos</p>
         <VideoSlider videos={videos} onVideoClick={handleProtectedClick} />
 
-        <p className="text-xl font-semibold text-center my-10">Advertisements</p>
-        <div onClick={handleProtectedClick}>
-          <AdSlider ads={banners} />
-        </div>
       </div>
 
       <Footer />

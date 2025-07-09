@@ -14,7 +14,7 @@ const BannerSlider = ({ banners }) => {
         autoplay: true,
         autoplaySpeed: 5000,
         arrows: false, // Remove arrows
-        pauseOnHover: true,
+        pauseOnHover: false,
         appendDots: dots => (
             <div
               style={{

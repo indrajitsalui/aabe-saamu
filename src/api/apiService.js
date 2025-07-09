@@ -92,7 +92,7 @@ export const fetchLiveTVList = (date) => {
     return handleApiCall(() => apiService.get(`/v1/livetv/list?date=${date}`));
 };
 export const fetchAdvertisements = () => {
-    return handleApiCall(() => apiService.get('/v1/app-config/home'));
+    return handleApiCall(() => apiService.get('/v1/app-config/advertisement'));
 };
 export const login = async (email, password) => {
     shouldSkipAuth = true; 

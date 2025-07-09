@@ -13,7 +13,7 @@ const VideoSlider = ({ videos, onVideoClick }) => {
         autoplay: true,
         autoplaySpeed: 5000,
         arrows: true,
-        pauseOnHover: true,
+        pauseOnHover: false,
     };
 
     return (

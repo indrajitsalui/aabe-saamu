@@ -4,7 +4,6 @@ import Footer from '../../components/Footer/Footer';
 
 const PrivacyPolicy = () => {
   return (
-    <><Header />
     <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
       <h1>Privacy Policy</h1>
       <p>
@@ -96,8 +95,7 @@ const PrivacyPolicy = () => {
         <a href="mailto:amesabuofc@gmail.com">amesabuofc@gmail.com</a>.
       </p>
     </div>
-    <Footer />
-    </>
+  
   );
 };
 

@@ -4,33 +4,48 @@ import Slider from 'react-slick';
 import './AdSlider.css';
 
 const AdSlider = ({ ads }) => {
-    const settings = {
-        infinite: true,
-        lazyLoad: true,
-        speed: 500,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 5000,
-        arrows: true,
-        pauseOnHover: true,
-    };
+  const settings = {
+    infinite: true,
+    lazyLoad: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    arrows: true,
+    pauseOnHover: true,
+  };
 
-    return (
-        <div >
-            <Slider {...settings}>
-                {ads.map((ad, index) => (
-                    <div key={index}  className="px-4">
-                        <img src={ad.banner_image} alt={ad.title} className="rounded-2xl"/>
-                        <div className="flex items-center gap-x-4 justify-between py-6">
-                        <p className="capitalize">{ad.title}</p>
-                        <button className="text-white bg-[#D21F1D] py-2 px-3 rounded-lg text-right">Visit Website</button>
-                        </div>
-                    </div>
-                ))}
-            </Slider>
-        </div>
-    );
+  return (
+    <div>
+      <Slider {...settings}>
+        {ads.map((ad, index) => (
+          <div key={index} className="px-4">
+            <img
+              src={ad.ad_image}
+              alt={ad.description}
+              className="rounded-2xl w-full h-64 object-cover"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = '/fallback.jpg'; // Optional fallback image
+              }}
+            />
+            <div className="flex items-center justify-between mt-4">
+              <p className="text-white text-sm">{ad.description}</p>
+              <a
+                href={ad.ad_link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white bg-[#D21F1D] py-2 px-3 rounded-lg"
+              >
+                Visit Website
+              </a>
+            </div>
+          </div>
+        ))}
+      </Slider>
+    </div>
+  );
 };
 
 export default AdSlider;

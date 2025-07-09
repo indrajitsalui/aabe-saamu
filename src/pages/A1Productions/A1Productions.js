@@ -41,7 +41,7 @@ const A1Productions = () => {
         autoplay: true,
         autoplaySpeed: 5000,
         arrows: true,
-        pauseOnHover: true,
+        pauseOnHover: false,
     };
 
     const handleVideoClick = (videoId) => {

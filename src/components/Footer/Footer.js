@@ -29,7 +29,7 @@ const Footer = () => {
             <div className="flex gap-x-6">
 
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235.33236302082798!2d84.80316138274861!3d19.3120108634705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3d51b19d64ee6d%3A0xb8815c3f9e91450f!2sAMESABU!5e0!3m2!1sen!2sin!4v1728666506853!5m2!1sen!2sin" 
-            width="140" height="120" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" className="border-none rounded-xl"></iframe>
+            width="140" height="120" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="border-none rounded-xl"></iframe>
 
                     <div className="flex flex-col gap-3 bg-[#121212] rounded-lg text-base p-4">
                         <p className="text-[#C3C3C3]">Amesabu Private Limited, 49 - Be.D.A Complex, <br /> 1st Floor, Near City Bus Stand,<br />Berhampur-760001</p>

@@ -5,7 +5,7 @@ import Footer from '../../components/Footer/Footer';
 import BannerSlider from '../../components/BannerSlider/BannerSlider';
 import VideoSlider from '../../components/VideoSlider/VideoSlider';
 import AdSlider from '../../components/AdSlider/AdSlider';
-import { fetchHomeData, fetchLiveTVList } from '../../api/apiService';
+import { fetchAdvertisements, fetchHomeData, fetchLiveTVList } from '../../api/apiService';
 // import './Home.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -22,10 +22,19 @@ const Home = () => {
             .then(response => {
                 setBanners(response.data.banners);
                 setVideos(response.data.a1_prod_videos);
-                setAds(response.data.banners); // Assuming ads are same as banners
+              
             })
             .catch(error => {
                 console.error('Error fetching home data:', error);
+                setError(error.message);
+            });
+
+            fetchAdvertisements()
+            .then(response=>{
+                setAds(response.data)
+            })
+              .catch(error => {
+                console.error('Error fetching ads data:', error);
                 setError(error.message);
             });
 

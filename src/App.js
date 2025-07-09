@@ -11,6 +11,7 @@ import GuestHome from './pages/GuestHome/GuestHome';
 import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
 import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
 import LiveTV from './pages/LiveTV/LiveTV';
+import Header from './components/Header/Header'; // <-- Make sure this import is here
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(() => {
@@ -24,19 +25,25 @@ function App() {
 
     const handleLogout = () => {
         localStorage.removeItem('authToken');
+        localStorage.removeItem('userData');
         setIsLoggedIn(false);
     };
 
     return (
         <Router>
             <div className="app-container">
+                <Header onLogout={handleLogout} />
                 <Routes>
-                    {/* 👇 Conditionally route "/" based on login status */}
                     <Route
                         path="/"
-                        element={isLoggedIn ? <Navigate to="/home" replace /> : <GuestHome />}
+                        element={
+                            localStorage.getItem('authToken') ? (
+                                <Navigate to="/home" replace />
+                            ) : (
+                                <GuestHome />
+                            )
+                        }
                     />
-
                     <Route path="/home" element={<Home />} />
                     <Route path="/a1productions" element={<A1Productions />} />
                     <Route path="/advertisements" element={<Advertisements />} />

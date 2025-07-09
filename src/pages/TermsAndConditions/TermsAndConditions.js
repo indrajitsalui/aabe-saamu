@@ -4,8 +4,6 @@ import Footer from '../../components/Footer/Footer';
 
 const TermsAndConditions = () => {
   return (
-    <>
-    <Header />
     <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
       <h1>Terms and Conditions</h1>
 
@@ -90,8 +88,7 @@ const TermsAndConditions = () => {
         <a href="mailto:amesabuofc@gmail.com">amesabuofc@gmail.com</a>
       </p>
     </div>
- <Footer />
-    </>
+
   );
 };
 
