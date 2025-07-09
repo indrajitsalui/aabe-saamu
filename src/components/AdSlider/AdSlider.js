@@ -17,7 +17,7 @@ const AdSlider = ({ ads }) => {
   };
 
   return (
-    <div className="mb-20">
+    <div className="mb-8">
       <Slider {...settings}>
         {ads.map((ad, index) => (
           <div key={index} className="px-4">

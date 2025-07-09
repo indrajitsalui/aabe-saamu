@@ -5,7 +5,7 @@ import './Footer.css';
 
 const Footer = () => {
     return (
-        <footer className="flex justify-between items-center py-8 px-16 bg-[#080809] footer-bg">
+        <footer className="flex justify-between items-center py-8 px-16 bg-[#080809] footer-bg mt-10">
             <div>
                 <img src="/logo.svg" alt="AmeSabu Logo" className="mb-2" />
                 <p className="text-sm text-[#C3C3C3]">Copyrights Reserved 2024 © AmeSabu</p>

@@ -68,7 +68,7 @@ const A1Productions = () => {
         <div className="mt-28 w-8/12 mx-auto">
             <BannerSlider banners={banners} />
             <p className="text-xl font-semibold text-center my-10">A1 Productions Videos</p>
-            <div>
+            <div className="mb-20">
                 {videos.slice(0, 3).length > 0 && (
                     <Slider {...settings} className="mb-6">
                         {videos.slice(0, 3).map((video, index) => (
