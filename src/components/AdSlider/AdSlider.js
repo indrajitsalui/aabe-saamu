@@ -13,11 +13,11 @@ const AdSlider = ({ ads }) => {
     autoplay: true,
     autoplaySpeed: 5000,
     arrows: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
   };
 
   return (
-    <div>
+    <div className="mb-20">
       <Slider {...settings}>
         {ads.map((ad, index) => (
           <div key={index} className="px-4">

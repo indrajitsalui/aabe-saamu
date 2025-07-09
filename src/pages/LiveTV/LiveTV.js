@@ -44,7 +44,7 @@ const LiveTV = () => {
       <h1 className="text-2xl font-semibold mb-6">Live TV -</h1>
 
       {currentVideo ? (
-        <div className="flex flex-col items-center mb-10">
+        <div className="flex flex-col items-center mb-10 mt-16">
           <div className="w-full max-w-4xl aspect-video rounded-xl overflow-hidden border border-gray-700 shadow-lg">
             <iframe
               className="w-full h-full"
